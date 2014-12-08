@@ -10,6 +10,8 @@ export default Ember.Controller.extend({
     },
     login: function() {
         // Login Stub
+        console.log(this.get('username'));
+        console.log(this.get('password'));
     },
     search: function() {
         // Search Stub
