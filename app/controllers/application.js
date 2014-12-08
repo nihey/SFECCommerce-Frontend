@@ -6,16 +6,55 @@ import SFECUtils from '../utils/sfec';
 export default Ember.Controller.extend({
   actions: {
     logout: function() {
-        // Logout Stub
+        SFECUtils.ajax({
+            type: 'GET',
+            url: SFECENV.APP.host + '/logout',
+            success: function() {
+                this.set('user', false);
+            },
+            context: this,
+        });
     },
+
     login: function() {
-        // Login Stub
-        console.log(this.get('username'));
-        console.log(this.get('password'));
+        this.set('login_fail', false);
+
+        var data = {
+            email: this.get('email'),
+            password: this.get('password'),
+        };
+
+        SFECUtils.ajax({
+            type: 'POST',
+            data: data,
+            url: SFECENV.APP.host + '/login',
+            success: function(data) {
+                this.set('user', JSON.parse(data));
+                Ember.$('#login-modal').modal('hide');
+            },
+            error: function() {
+                this.set('login_fail', true);
+            },
+            context: this,
+        });
     },
     search: function() {
         // Search Stub
         console.log(this.get('search'));
     },
+  },
+
+  initialize: function() {
+      this.set('login_fail', false);
+      this.set('user', false);
+      console.log('Foobar');
+      SFECUtils.ajax({
+          type: 'GET',
+          url: SFECENV.APP.host + '/login_check',
+          success: function(data) {
+              this.set('user', JSON.parse(data));
+          },
+          context: this,
+      });
   },
 });
