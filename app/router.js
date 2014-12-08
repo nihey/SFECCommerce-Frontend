@@ -7,7 +7,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
     this.resource('admin', {path: '/admin'});
-    this.resource('products', {path: '/products'});
+    this.resource('cart', {path: '/cart'});
 });
 
 export default Router;
