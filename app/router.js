@@ -6,6 +6,7 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+    this.resource('admin', {path: '/admin'});
     this.resource('products', {path: '/products'});
 });
 
