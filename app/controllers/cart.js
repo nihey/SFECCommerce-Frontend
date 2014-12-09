@@ -16,6 +16,7 @@ export default Ember.Controller.extend({
                 Ember.$('#login-modal').modal('show');
                 return;
             }
+            localStorage['cart'] = '[]';
             this.transitionToRoute('/purchase');
         },
     },
