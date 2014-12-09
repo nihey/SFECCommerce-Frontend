@@ -9,8 +9,45 @@
 <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane active" id="users">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>email</th>
+          <th>Admin</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each user in users}}
+          <tr>
+            <td>{{ _view.contentIndex }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.is_admin }}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
   </div>
-  <div class="tab-pane active" id="products">
-    Foobar
+  <div class="tab-pane" id="products">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Product</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each product in products}}
+          <tr>
+            <td>{{ _view.contentIndex }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
   </div>
 </div>

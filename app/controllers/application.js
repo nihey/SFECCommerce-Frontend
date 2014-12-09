@@ -38,8 +38,39 @@ export default Ember.Controller.extend({
             context: this,
         });
     },
+
     search: function() {
         this.search_changed();
+    },
+
+    register: function() {
+      this.set('register_error', false);
+      this.set('password_error', false);
+
+      if (this.get('register_password') != this.get('register_cpassword')) {
+        this.set('password_error', true);
+        return
+      }
+
+      var data = {
+        name: this.get('register_name'),
+        email: this.get('register_email'),
+        password: this.get('register_password'),
+      }
+
+      SFECUtils.ajax({
+        type: 'POST',
+        data: data,
+        url: SFECENV.APP.host + '/register',
+        success: function(data) {
+          this.set('user', JSON.parse(data));
+          Ember.$('#register-modal').modal('hide');
+        },
+        error: function() {
+          this.set('register_error', true);
+        },
+        context: this,
+      });
     },
   },
 
@@ -52,6 +83,8 @@ export default Ember.Controller.extend({
   }.observes('search'),
 
   initialize: function() {
+      this.set('register_error', false);
+      this.set('password_error', false);
       this.set('login_fail', false);
       this.set('user', false);
       console.log('Foobar');
@@ -59,6 +92,7 @@ export default Ember.Controller.extend({
           type: 'GET',
           url: SFECENV.APP.host + '/login_check',
           success: function(data) {
+              console.log(JSON.parse(data));
               this.set('user', JSON.parse(data));
           },
           context: this,
