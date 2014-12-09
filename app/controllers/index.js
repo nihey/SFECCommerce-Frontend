@@ -11,6 +11,12 @@ export default Ember.Controller.extend({
                 var cart = JSON.parse(localStorage['cart']);
                 cart.push(product);
                 localStorage['cart'] = JSON.stringify(cart);
+
+                // Notify the user
+                Ember.$('#add-notification').show();
+                setTimeout(function() {
+                  Ember.$('#add-notification').hide();
+                }, 500);
             }
         },
     },

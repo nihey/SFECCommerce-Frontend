@@ -24,7 +24,14 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li>{{#link-to "cart"}}Cart{{/link-to}}</li>
+            <li>
+              {{#link-to "cart"}}
+                Cart
+                <span id="add-notification" hidden>
+                  (Added)
+                </span>
+              {{/link-to}}
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>

@@ -9,6 +9,7 @@ Router.map(function() {
     this.resource('admin', {path: '/admin'});
     this.resource('products', {path: '/products/:search'});
     this.resource('cart', {path: '/cart'});
+    this.resource('purchase', {path: '/purchase'});
 });
 
 export default Router;
