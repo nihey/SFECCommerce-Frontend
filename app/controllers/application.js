@@ -47,16 +47,16 @@ export default Ember.Controller.extend({
       this.set('register_error', false);
       this.set('password_error', false);
 
-      if (this.get('register_password') != this.get('register_cpassword')) {
+      if (this.get('register_password') !== this.get('register_cpassword')) {
         this.set('password_error', true);
-        return
+        return;
       }
 
       var data = {
         name: this.get('register_name'),
         email: this.get('register_email'),
         password: this.get('register_password'),
-      }
+      };
 
       SFECUtils.ajax({
         type: 'POST',

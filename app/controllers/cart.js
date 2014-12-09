@@ -1,7 +1,5 @@
 import Ember from 'ember';
 
-import SFECENV from 'sfec/config/environment';
-import SFECUtils from '../utils/sfec';
 
 export default Ember.Controller.extend({
     needs: ['application'],
