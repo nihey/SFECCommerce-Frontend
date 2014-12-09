@@ -39,10 +39,17 @@ export default Ember.Controller.extend({
         });
     },
     search: function() {
-        // Search Stub
-        console.log(this.get('search'));
+        this.search_changed();
     },
   },
+
+  search_changed: function() {
+    if (this.get('search')) {
+        this.transitionToRoute('/products/' + this.get('search'));
+        return;
+    }
+    this.transitionToRoute('/');
+  }.observes('search'),
 
   initialize: function() {
       this.set('login_fail', false);
