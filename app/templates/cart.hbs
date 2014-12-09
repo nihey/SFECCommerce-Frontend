@@ -1,0 +1,32 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each product in cart}}
+      <tr>
+        <td>{{ _view.contentIndex }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td><button class="btn btn-danger" {{action "remove_item" product on="click"}}>X</button></td>
+      </tr>
+    {{/each}}
+      <tr>
+        <td> - </td>
+        <td - </td>
+        <td>Total</td>
+        <td>{{ total }}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button class="btn btn-success">Confirm</button></td>
+      </tr>
+  </tbody>
+</table>
