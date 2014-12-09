@@ -29,10 +29,10 @@ export default Ember.Controller.extend({
             total += parseFloat(cart[i].price);
         }
         this.set('total', total);
-        if (total === 0) {
-            Ember.$('#confirm-button').attr('disabled', 'disabled');
+        if (cart.length === 0) {
+            this.set('valid_purchase', false);
             return;
         }
-        Ember.$('#confirm-button').removeAttr('disabled');
+        this.set('valid_purchase', true);
     },
 });

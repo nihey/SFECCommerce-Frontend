@@ -26,7 +26,11 @@
         <td></td>
         <td></td>
         <td></td>
-        <td><button id="confirm-button" class="btn btn-success" {{action "confirm_purchase" on="click"}}>Confirm</button></td>
+        <td>
+          {{#if valid_purchase}}
+            <button class="btn btn-success" {{action "confirm_purchase" on="click"}}>Confirm</button>
+          {{/if}}
+        </td>
       </tr>
   </tbody>
 </table>
